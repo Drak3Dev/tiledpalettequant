@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiledpalettequant"
+version = "1.0.0"
+description = "Quantize images to tiles that each use one of several small palettes (retro console style)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+authors = [
+    { name = "rilden", email = "rilden@users.noreply.github.com" },
+    { name = "Claude (Anthropic), Python port" },
+]
+dependencies = ["numpy>=1.22", "Pillow>=9.1"]
+
+[project.optional-dependencies]
+fast = ["numba>=0.56"]
+dnd = ["tkinterdnd2"]
+all = ["numba>=0.56", "tkinterdnd2"]
+
+[project.scripts]
+tiledpalettequant-cli = "tiledpalettequant.cli:main"
+
+[project.gui-scripts]
+tiledpalettequant = "tiledpalettequant.gui:main"
+
+[tool.setuptools]
+packages = ["tiledpalettequant"]
+
+[tool.setuptools.package-data]
+tiledpalettequant = ["carina-nebula.png"]

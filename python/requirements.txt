@@ -1,0 +1,6 @@
+numpy>=1.22
+Pillow>=9.1
+# Optional but strongly recommended: speeds quantization up ~100x.
+numba>=0.56
+# Optional: drag & drop of images onto the window.
+# tkinterdnd2
