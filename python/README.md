@@ -34,13 +34,24 @@ powershell -ExecutionPolicy Bypass -c "irm https://raw.githubusercontent.com/Dra
 - **macOS:** приложение в `~/Applications` и те же команды.
 - **Windows:** ярлыки в меню «Пуск» и на рабочем столе. Если Python не установлен, скрипт поставит его через winget.
 
-Повторный запуск той же команды обновляет программу. Удалить её можно, стерев папку установки:
+Повторный запуск той же команды обновляет программу.
 
-- Linux: `~/.local/share/tiledpalettequant`;
-- macOS: `~/Library/Application Support/tiledpalettequant`;
-- Windows: `%LOCALAPPDATA%\tiledpalettequant`.
+### Удаление
 
-Вместе с папкой удали ярлыки.
+**Linux / macOS:** команда `tiledpalettequant-uninstall` или
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Drak3Dev/tiledpalettequant/main/python/uninstall.sh | bash
+```
+
+**Windows:** «Параметры → Приложения → Tiled Palette Quantizer → Удалить» или
+
+```powershell
+powershell -ExecutionPolicy Bypass -c "irm https://raw.githubusercontent.com/Drak3Dev/tiledpalettequant/main/python/uninstall.ps1 | iex"
+```
+
+Удаляется всё, что поставил установщик: папка программы с её виртуальным окружением, ярлыки и команды.
+Python и системные пакеты не трогаются.
 
 На Linux tkinter иногда нужно поставить отдельно (см. таблицу ниже). Скрипт подскажет команду, если его нет.
 

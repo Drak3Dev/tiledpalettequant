@@ -119,5 +119,17 @@ foreach ($lnkPath in @($startMenu, $desktop)) {
 $cli = Join-Path $Dest 'tiledpalettequant-cli.cmd'
 Set-Content -Path $cli -Encoding ASCII -Value "@echo off`r`nsetlocal`r`nset `"PYTHONPATH=$app`"`r`n`"$vpy`" -m tiledpalettequant cli %*"
 
+$uninstallKey = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\TiledPaletteQuantizer'
+$uninstallPs1 = Join-Path $app 'uninstall.ps1'
+New-Item -Path $uninstallKey -Force | Out-Null
+Set-ItemProperty -Path $uninstallKey -Name DisplayName -Value 'Tiled Palette Quantizer'
+Set-ItemProperty -Path $uninstallKey -Name Publisher -Value 'Drak3Dev'
+Set-ItemProperty -Path $uninstallKey -Name DisplayVersion -Value '1.0.0'
+Set-ItemProperty -Path $uninstallKey -Name InstallLocation -Value $Dest
+Set-ItemProperty -Path $uninstallKey -Name UninstallString -Value "powershell.exe -NoProfile -ExecutionPolicy Bypass -File `"$uninstallPs1`""
+Set-ItemProperty -Path $uninstallKey -Name NoModify -Value 1 -Type DWord
+Set-ItemProperty -Path $uninstallKey -Name NoRepair -Value 1 -Type DWord
+
 Say 'Done! Shortcuts were added to the Start menu and the desktop.'
 Say "Command line version: $cli"
+Say 'Uninstall it from Settings > Apps, or with the uninstall.ps1 one-liner from the README.'

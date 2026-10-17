@@ -25,6 +25,20 @@ curl -fsSL https://raw.githubusercontent.com/Drak3Dev/tiledpalettequant/main/pyt
 powershell -ExecutionPolicy Bypass -c "irm https://raw.githubusercontent.com/Drak3Dev/tiledpalettequant/main/python/install.ps1 | iex"
 ```
 
+## Uninstall
+
+**Linux / macOS:** run `tiledpalettequant-uninstall`, or:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Drak3Dev/tiledpalettequant/main/python/uninstall.sh | bash
+```
+
+**Windows:** Settings → Apps → Tiled Palette Quantizer → Uninstall, or:
+
+```powershell
+powershell -ExecutionPolicy Bypass -c "irm https://raw.githubusercontent.com/Drak3Dev/tiledpalettequant/main/python/uninstall.ps1 | iex"
+```
+
 ## Credits
 
 - Original algorithm and web version: [rilden](https://github.com/rilden)

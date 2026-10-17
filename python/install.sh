@@ -97,7 +97,11 @@ cat >"$BIN_DIR/tiledpalettequant-cli" <<EOF
 #!/bin/sh
 PYTHONPATH="$DEST/app" exec "$VPY" -m tiledpalettequant cli "\$@"
 EOF
-chmod +x "$BIN_DIR/tiledpalettequant" "$BIN_DIR/tiledpalettequant-cli"
+cat >"$BIN_DIR/tiledpalettequant-uninstall" <<EOF
+#!/bin/sh
+TPQ_HOME="$DEST" exec bash "$DEST/app/uninstall.sh"
+EOF
+chmod +x "$BIN_DIR/tiledpalettequant" "$BIN_DIR/tiledpalettequant-cli" "$BIN_DIR/tiledpalettequant-uninstall"
 
 if [ "$OS" = "Darwin" ]; then
     APP="$HOME/Applications/Tiled Palette Quantizer.app"
@@ -140,6 +144,7 @@ EOF
 fi
 
 say "Done! Start it with: tiledpalettequant"
+say "Uninstall with: tiledpalettequant-uninstall"
 case ":$PATH:" in
     *":$BIN_DIR:"*) ;;
     *) warn "$BIN_DIR is not in PATH; add it, or run $BIN_DIR/tiledpalettequant directly" ;;
